@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capabilities | GenuineXplor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: #f8fafc;
+      color: #222;
+      letter-spacing: 0.01em;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+      border-radius: 0 0 24px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 2.1em;
+      font-weight: 800;
+      color: #FFD700;
+      letter-spacing: 0.05em;
+    }
+    nav {
+      position: relative;
+      z-index: 20;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    nav > ul > li {
+      position: relative;
+    }
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.08em;
+      position: relative;
+      transition: color 0.2s;
+      padding: 8px 0;
+      display: inline-block;
+    }
+    nav a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+      border-radius: 2px;
+    }
+    nav a:hover {
+      color: #7CFC00;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      background: #fff;
+      min-width: 180px;
+      box-shadow: 0 8px 24px rgba(255,215,0,0.10);
+      border-radius: 0 0 16px 16px;
+      z-index: 99;
+      padding: 8px 0;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 10px 24px;
+      margin: 0;
+      color: #333;
+      font-size: 1em;
+      font-weight: 500;
+      border-radius: 0;
+      background: none;
+      transition: background 0.18s, color 0.18s;
+    }
+    .dropdown-content a:hover {
+      background: #fffbe6;
+      color: #7CFC00;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* Capabilities Section */
+    .capabilities-section {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      margin: 0 auto 36px auto;
+      max-width: 1100px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      overflow: hidden;
+      position: relative;
+    }
+    .capabilities-content {
+      flex: 2 1 480px;
+      padding: 64px 48px 48px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fff;
+      position: relative;
+      z-index: 2;
+    }
+    .capabilities-content h2 {
+      font-size: 2em;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+    .capabilities-content p {
+      font-size: 1.13em;
+      margin-bottom: 1.1em;
+      color: #222;
+      font-weight: 500;
+    }
+    .capabilities-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0 0;
+    }
+    .capabilities-content li {
+      margin-bottom: 14px;
+      padding-left: 22px;
+      position: relative;
+      font-size: 1.08em;
+      animation: jump 2.2s cubic-bezier(.4,0,.2,1) infinite;
+      animation-delay: calc(var(--i) * 0.12s);
+      display: block;
+    }
+    .capabilities-content li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      background: #7CFC00;
+      border-radius: 50%;
+    }
+    @keyframes jump {
+      0%, 100% { transform: translateY(0);}
+      10% { transform: translateY(-8px);}
+      20% { transform: translateY(0);}
+    }
+    .btn {
+      margin-top: 28px;
+      padding: 12px 38px;
+      background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+      border: none;
+      color: #222;
+      font-weight: bold;
+      font-size: 1.1em;
+      border-radius: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(255,215,0,0.08);
+      transition: background 0.2s, transform 0.2s;
+      align-self: flex-start;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #7CFC00 0%, #FFD700 100%);
+      color: #222;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .capabilities-img-side {
+      flex: 1 1 380px;
+      min-width: 320px;
+      background: radial-gradient(circle at 60% 40%, #FFD700 0%, #7CFC00 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      min-height: 420px;
+      border-radius: 0 24px 24px 0;
+      overflow: hidden;
+    }
+    .capabilities-img-side::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, #fffbe6 0%, #FFD70044 80%, transparent 100%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(1.2);
+      animation: floatGlow 3.5s ease-in-out infinite alternate;
+      z-index: 1;
+      pointer-events: none;
+    }
+    @keyframes floatGlow {
+      0% { filter: blur(0px); opacity: 0.7; }
+      100% { filter: blur(8px); opacity: 1; }
+    }
+    .capabilities-img-side img {
+      width: 90%;
+      max-width: 340px;
+      border-radius: 24px 24px 0 0;
+      box-shadow: 0 8px 32px rgba(124,252,0,0.10);
+      object-fit: cover;
+      margin-bottom: 0;
+      margin-top: 32px;
+      border: 6px solid #fff;
+      position: relative;
+      z-index: 2;
+      animation: floatImg 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes floatImg {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-16px);}
+    }
+    /* Activities Carousel */
+    .activities-carousel-section {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      margin: 0 auto 36px auto;
+      max-width: 1100px;
+      padding: 48px 0 48px 0;
+      position: relative;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .activities-carousel-title {
+      font-size: 1.5em;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+    .activities-carousel {
+      width: 98%;
+      max-width: 900px;
+      height: 420px;
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(124,252,0,0.10);
+      background: #f4f4f4;
+      margin-bottom: 0;
+      margin-top: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .activity-slide {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(.4,0,.2,1);
+      z-index: 1;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .activity-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .carousel-controls {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .carousel-controls button {
+      background: rgba(255,215,0,0.18);
+      border: none;
+      color: #FFD700;
+      font-size: 2em;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+      pointer-events: auto;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-controls button:hover {
+      background: #7CFC00;
+      color: #fff;
+      transform: scale(1.12);
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 0;
+      position: absolute;
+      left: 50%;
+      top: -32px;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    .carousel-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid #FFD700;
+      box-shadow: 0 0 0 2px #7CFC00;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, border 0.2s;
+      margin: 0 2px;
+    }
+    .carousel-dot.active {
+      background: #7CFC00;
+      border: 4px solid #FFD700;
+      transform: scale(1.18);
+    }
+    .activity-caption {
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      color: #222;
+      border-radius: 0 0 32px 32px;
+      padding: 28px 36px 24px 36px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 5;
+      text-align: center;
+      font-size: 1.13em;
+      font-weight: 500;
+      box-shadow: 0 -2px 16px rgba(255,215,0,0.04);
+      letter-spacing: 0.01em;
+    }
+    .activity-caption h3 {
+      color: #FFD700;
+      font-size: 1.18em;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      letter-spacing: 0.01em;
+    }
+    .activity-caption p {
+      margin: 0;
+      color: #222;
+      font-size: 1em;
+      font-weight: 500;
+    }
+    /* Clients Banner */
+    .clients-banner-section {
+      width: 100vw;
+      max-width: none;
+      margin: 0 auto 0 auto;
+      padding: 0;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      transform: translateX(-50%);
+      min-height: 340px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      background: linear-gradient(120deg, #eaf7e0 0%, #7CFC00 60%, #FFD700 100%);
+      overflow: hidden;
+      animation: clientsBgMove 8s linear infinite alternate;
+    }
+    @keyframes clientsBgMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .clients-banner-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1100px;
+      padding: 64px 36px 48px 36px;
+      text-align: center;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInUp 2s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .clients-banner-content h2 {
+      font-size: 2em;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #222;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 12px rgba(255,255,255,0.18);
+      animation: colorPulse 3s infinite alternate;
+    }
+    @keyframes colorPulse {
+      0% { color: #222; }
+      100% { color: #7CFC00; }
+    }
+    .clients-banner-content p {
+      font-size: 1.18em;
+      color: #222;
+      margin-bottom: 0;
+      text-shadow: 0 2px 8px rgba(255,255,255,0.10);
+      font-weight: 500;
+      line-height: 1.7;
+      max-width: 700px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 18px 24px;
+      display: inline-block;
+      animation: fadeInUp 2.5s cubic-bezier(.4,0,.2,1);
+    }
+    .clients-animated-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      margin-top: 36px;
+      margin-bottom: 0;
+      flex-wrap: wrap;
+    }
+    .clients-animated-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fffbe6 60%, #FFD700 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(124,252,0,0.10);
+      font-size: 2em;
+      color: #7CFC00;
+      animation: iconBounce 2.5s infinite alternate;
+    }
+    .clients-animated-icon:nth-child(2) { animation-delay: 0.3s;}
+    .clients-animated-icon:nth-child(3) { animation-delay: 0.6s;}
+    .clients-animated-icon:nth-child(4) { animation-delay: 0.9s;}
+    .clients-animated-icon:nth-child(5) { animation-delay: 1.2s;}
+    @keyframes iconBounce {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-18px);}
+    }
+    @media (max-width: 900px) {
+      header, .capabilities-content, .footer {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 8px;
+        gap: 24px;
+      }
+      .capabilities-section {
+        flex-direction: column;
+        border-radius: 18px;
+      }
+      .capabilities-img-side {
+        min-height: 220px;
+        border-radius: 18px 18px 0 0;
+      }
+      .capabilities-img-side img {
+        margin-top: 16px;
+        border-radius: 18px 18px 0 0;
+      }
+      .capabilities-content {
+        padding: 32px 16px 32px 16px;
+      }
+      .clients-banner-content {
+        padding: 40px 8px 32px 8px;
+      }
+    }
+    @media (max-width: 700px) {
+      .capabilities-content h2,
+      .clients-banner-content h2 {
+        font-size: 1.2em;
+      }
+      .capabilities-content p,
+      .clients-banner-content p {
+        font-size: 1em;
+      }
+      .clients-banner-section {
+        min-height: 180px;
+      }
+      .activities-carousel {
+        height: 220px;
+        border-radius: 18px;
+      }
+      .activity-caption {
+        border-radius: 0 0 18px 18px;
+        padding: 18px 8px 14px 8px;
+        font-size: 1em;
+      }
+      .clients-animated-icons {
+        gap: 16px;
+      }
+    }
+    /* Footer */
+    .footer {
+      background: #fffbe6;
+      color: #333;
+      padding: 64px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100vw;
+      max-width: none;
+      margin: 0;
+      gap: 48px;
+      border-radius: 0;
+      box-shadow: 0 -2px 16px rgba(255,215,0,0.04);
+    }
+    .footer h4 {
+      margin-bottom: 15px;
+      color: #FFD700;
+      font-weight: 700;
+      font-size: 1.08em;
+    }
+    .footer a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer a:hover {
+      color: #7CFC00;
+    }
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer li {
+      margin-bottom: 10px;
+    }
+    .footer-bottom {
+      flex: 1 1 100%;
+      margin-top: 24px;
+      color: #999;
+      font-size: 0.98em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">GenuineXplor</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li class="dropdown" tabindex="0">
+        <a href="services.html">Services</a>
+        <div class="dropdown-content">
+          <a href="services.html#capabilities">Capabilities</a>
+          <a href="services.html#activities">Activities</a>
+          <a href="services.html#clients">Clients</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Capabilities Section -->
+<section class="capabilities-section" id="capabilities">
+  <div class="capabilities-content">
+    <h2>Capabilities</h2>
+    <p>What we deliver is more than equipment — it's reliable outdoor gear, built with purpose and proven in the field.</p>
+    <ul>
+      <li style="--i:0">Complete OEM & ODM Solutions for Outdoor Gear</li>
+      <li style="--i:1">In-house Design & Engineering — from concept to tested prototype</li>
+      <li style="--i:2">Proven Manufacturing Trusted by Global Brands</li>
+      <li style="--i:3">Field-Tested Products Ready for Demanding Environments</li>
+      <li style="--i:4">Flexible Support for Brands at Every Stage</li>
+      <li style="--i:5">Fast Prototyping and Reliable Worldwide Delivery</li>
+    </ul>
+    <button class="btn" onclick="location.href='contact.html'">Get a Quote</button>
+  </div>
+  <div class="capabilities-img-side">
+    <img src="capabilities-main.jpg" alt="Capabilities">
+  </div>
+</section>
+
+<!-- Activities Carousel -->
+<section class="activities-carousel-section" id="activities">
+  <div class="activities-carousel-title">Activities</div>
+  <div class="activities-carousel">
+    <div class="activity-slide active" style="background-image: url('expo-asia.jpg');"></div>
+    <div class="activity-slide" style="background-image: url('expo-europe.jpg');"></div>
+    <div class="activity-slide" style="background-image: url('expo-usa.jpg');"></div>
+    <div class="carousel-controls">
+      <button id="activity-prev">&#10094;</button>
+      <button id="activity-next">&#10095;</button>
+    </div>
+    <div class="carousel-dots">
+      <div class="carousel-dot active"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+    </div>
+    <div class="activity-caption" id="activity-caption">
+      <h3>Asia Outdoor Expo</h3>
+      <p>Annual showcase of our new products and technologies in the Asian market. We connect with partners and share our latest innovations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Clients Banner -->
+<section class="clients-banner-section" id="clients">
+  <div class="clients-banner-content">
+    <h2>Clients</h2>
+    <p>
+      We are the trusted OEM/ODM partner behind many well-known outdoor brands worldwide.<br>
+      Our products are sold in over <span style="color:#FFD700;font-weight:700;">30+</span> countries and regions, and can be found in major outdoor retail chains and specialty stores.<br>
+      <span style="color:#7CFC00;font-weight:700;">Hundreds of thousands</span> of outdoor enthusiasts use our gear every year.<br>
+      <br>
+      <span style="font-size:1.05em;">Your brand, our strength — let’s build the next success story together.</span>
+    </p>
+    <div class="clients-animated-icons">
+      <div class="clients-animated-icon" title="Backpacks">🎒</div>
+      <div class="clients-animated-icon" title="Knives">🔪</div>
+      <div class="clients-animated-icon" title="Belts">🧢</div>
+      <div class="clients-animated-icon" title="Tactical">🛡️</div>
+      <div class="clients-animated-icon" title="Accessories">🎯</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div style="flex: 1 1 200px;">
+    <h4>OEM & ODM</h4>
+    <ul>
+      <li><a href="services.html#capabilities">Capabilities</a></li>
+      <li><a href="services.html#activities">Activities</a></li>
+      <li><a href="services.html#clients">Clients</a></li>
+      <li><a href="product.html#custom">Custom Outdoor Gear</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html#story">Our Story</a></li>
+      <li><a href="about.html#factory">Our Factory</a></li>
+      <li><a href="about.html#clients">Global Clients</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>Connect</h4>
+    <ul>
+      <li style="margin-bottom: 10px;">Phone: +86 123 456 7890</li>
+      <li style="margin-bottom: 10px;">Email: infoxxxx</li>
+      <li>
+        <a href="#"><img src="icon-ig.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-fb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-ytb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-linkedin.svg" width="20" height="20"></a>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 GenuineXplor. All rights reserved.
+  </div>
+</footer>
+<script>
+const slides = document.querySelectorAll('.activity-slide');
+const dots = document.querySelectorAll('.carousel-dot');
+const captions = [
+  {
+    title: "Asia Outdoor Expo",
+    desc: "Annual showcase of our new products and technologies in the Asian market. We connect with partners and share our latest innovations."
+  },
+  {
+    title: "Europe Outdoor Show",
+    desc: "Presenting our capabilities to the European market and building relationships with global outdoor brands."
+  },
+  {
+    title: "USA Outdoor Retailer",
+    desc: "Engaging with North American partners and displaying our field-tested outdoor gear at the largest US trade show."
+  }
+];
+let currentSlide = 0;
+let slideInterval = setInterval(nextSlide, 7000);
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+  // 更新文字
+  const caption = document.getElementById('activity-caption');
+  caption.innerHTML = `<h3>${captions[index].title}</h3><p>${captions[index].desc}</p>`;
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+document.getElementById('activity-next').addEventListener('click', () => {
+  nextSlide();
+  resetInterval();
+});
+document.getElementById('activity-prev').addEventListener('click', () => {
+  prevSlide();
+  resetInterval();
+});
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentSlide = index;
+    showSlide(currentSlide);
+    resetInterval();
+  });
+});
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 7000);
+}
+</script>
+</body>
+</html>

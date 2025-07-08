@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outdoor Gear OEM/ODM - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: #f8fafc;
+      color: #222;
+      letter-spacing: 0.01em;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+      border-radius: 0 0 24px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 2.1em;
+      font-weight: 800;
+      color: #FFD700;
+      letter-spacing: 0.05em;
+    }
+    nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links > a,
+    .nav-link-btn {
+      color: #333 !important;
+      font-weight: 600;
+      font-size: 1.08em;
+      margin: 0 18px;
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+    }
+    .nav-links > a:hover,
+    .nav-link-btn:hover,
+    .nav-link-btn.active {
+      color: #7CFC00 !important;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropbtn {
+      background: none;
+      border: none;
+      font: inherit;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.08em;
+      margin: 0 18px;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .dropbtn:hover,
+    .dropdown.open .dropbtn {
+      color: #7CFC00;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 120%;
+      min-width: 160px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(255,215,0,0.08);
+      border-radius: 10px;
+      z-index: 100;
+      flex-direction: column;
+      padding: 8px 0;
+      animation: fadeIn 0.2s;
+    }
+    .dropdown.open .dropdown-content {
+      display: flex;
+    }
+    .dropdown-content a {
+      color: #333;
+      padding: 10px 24px;
+      text-decoration: none;
+      display: block;
+      font-size: 1em;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 6px;
+    }
+    .dropdown-content a:hover {
+      background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+      color: #fff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    /* 移动端样式 */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 16px;
+      z-index: 101;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: #FFD700;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    @media (max-width: 700px) {
+      .nav-toggle {
+        display: flex;
+      }
+      nav {
+        width: 100%;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 4px 24px rgba(255,215,0,0.10);
+        border-radius: 0 0 18px 18px;
+        padding: 18px 0 12px 0;
+        display: none;
+        z-index: 100;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-links > a,
+      .dropbtn,
+      .nav-link-btn {
+        margin: 12px 24px;
+        font-size: 1.1em;
+        color: #333 !important;
+      }
+      .dropdown-content {
+        position: static;
+        min-width: 0;
+        box-shadow: none;
+        border-radius: 0;
+        background: none;
+        padding: 0;
+        animation: none;
+      }
+      .dropdown-content a {
+        padding: 10px 36px;
+        background: none;
+        color: #333;
+        border-radius: 0;
+      }
+      .dropdown.open .dropdown-content {
+        display: flex;
+      }
+    }
+    .banner {
+      height: 60vh;
+      min-height: 320px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 8px 32px rgba(255,215,0,0.06);
+      margin-bottom: 32px;
+      background: #fff;
+    }
+    .banner-slide {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    .banner-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .banner-content {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      width: 90%;
+      max-width: 700px;
+      background: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      backdrop-filter: none;
+    }
+    .banner-content h1 {
+      font-size: 2.2em;
+      margin: 0.5em 0 0.2em 0;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+    .banner-content p {
+      font-size: 1.2em;
+      margin-bottom: 1.5em;
+      color: #fff;
+      text-shadow: 1px 1px 8px #0008;
+    }
+    .btn {
+      background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+      color: #222;
+      border: none;
+      border-radius: 24px;
+      padding: 12px 36px;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(124,252,0,0.08);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #7CFC00 0%, #FFD700 100%);
+      color: #111;
+    }
+    .banner-controls {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 18px;
+      z-index: 3;
+    }
+    .banner-controls button {
+      background: rgba(255,255,255,0.7);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.5em;
+      color: #FFD700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .banner-controls button:hover {
+      background: #FFD700;
+      color: #fff;
+    }
+    .banner-dots {
+      position: absolute;
+      bottom: 18px;
+      right: 32px;
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+    .banner-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .banner-dot.active {
+      background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+      opacity: 1;
+    }
+    .intro {
+      padding: 48px 20px 32px 20px;
+      text-align: center;
+      color: #333;
+      max-width: 900px;
+      margin: 0 auto 32px auto;
+      font-size: 1.3em;
+      line-height: 1.7;
+      /* background: #fff;  // 移除白色底 */
+      border-radius: 0;     /* 去掉圆角 */
+      box-shadow: none;     /* 去掉阴影 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .intro-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .intro-title {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #FFD700;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .intro-desc {
+      font-size: 1em;
+      color: #333;
+      margin: 0;
+      white-space: nowrap;
+      font-weight: 400;
+    }
+    .products {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 36px 20px 36px 20px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      margin-bottom: 32px;
+    }
+    .product-box {
+      flex: 1 1 220px;
+      background-size: cover;
+      background-position: center;
+      padding: 24px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      min-height: 240px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+      border: none;
+      overflow: hidden;
+    }
+    .product-box h2 {
+      position: relative;
+      z-index: 2;
+      padding: 10px 22px;
+      font-size: 1.2em;
+      background: rgba(255,255,255,0.18);
+      border-radius: 8px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 10px;
+      color: #FFD700;
+    }
+    .product-box:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 8px 32px rgba(255,215,0,0.10);
+    }
+    /* --- Why Us Section --- */
+    .why-us {
+      background: #fff;
+      color: #222;
+      position: relative;
+      padding: 48px 20px 40px 20px;
+      text-align: center;
+      border-radius: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      /* border: 2.5px solid #222;  移除黑色边框 */
+    }
+    .why-us h2 {
+      font-size: 1.6em;
+      margin-bottom: 28px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #111; /* 改为黑色 */
+      text-shadow: none;
+    }
+    .why-us-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .why-us-icon {
+      flex: 1 1 40%;
+      padding: 28px 18px;
+      /* border: 2.5px solid #222; 移除黑色边框 */
+      border-radius: 14px;
+      background: none; /* 移除背景色 */
+      font-size: 1.08em;
+      font-weight: 700;
+      transition: 
+        transform 0.3s, 
+        background 0.3s, 
+        box-shadow 0.3s,
+        border 0.3s,
+        border-image 0.3s;
+      cursor: default;
+      /* box-shadow: 0 2px 12px rgba(255,215,0,0.03); */
+      color: #333;
+      border: none;
+      border-image: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10); /* 柔和阴影 */
+    }
+    .why-us-icon:hover {
+      transform: scale(1.06) translateY(-6px);
+      background: linear-gradient(90deg, #fffbe6 60%, #f8fafc 100%);
+      color: #7CFC00;
+      /* border: 2.5px solid; */
+      /* border-image: linear-gradient(90deg, #FFD700, #7CFC00) 1; */
+      box-shadow: 0 8px 32px rgba(124,252,0,0.13); /* hover时阴影更明显 */
+    }
+    /* --- End Why Us Section --- */
+    .testimonials {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 36px 20px 36px 20px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      margin-bottom: 32px;
+    }
+    .testimonial-box {
+      flex: 1;
+      min-width: 220px;
+      max-width: 320px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px;
+      color: #333;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 220px;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+      overflow: hidden;
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimonial-text {
+      position: relative;
+      z-index: 2;
+      padding: 16px 14px 14px 14px;
+      background: rgba(255,255,255,0.96);
+      font-style: italic;
+      font-size: 1em;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      color: #333;
+    }
+    .testimonial-box:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 8px 32px rgba(255,215,0,0.10);
+    }
+    .contact {
+      text-align: center;
+      padding: 48px 20px 60px 20px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      margin-bottom: 32px;
+    }
+    .contact h2 {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #111; /* 黑色字 */
+      margin-bottom: 18px;
+    }
+    .footer {
+      background: #fffbe6;
+      color: #333;
+      padding: 64px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100vw;         /* 铺满宽度 */
+      max-width: none;      /* 不限制最大宽度 */
+      margin: 0;            /* 去掉外边距 */
+      gap: 48px;            /* 间距更大 */
+      border-radius: 0;     /* 去掉圆角 */
+      box-shadow: 0 -2px 16px rgba(255,215,0,0.04);
+    }
+    .footer h4 {
+      margin-bottom: 15px;
+      color: #FFD700;
+      font-weight: 700;
+      font-size: 1.08em;
+    }
+    .footer a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer a:hover {
+      color: #7CFC00;
+    }
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer li {
+      margin-bottom: 10px;
+    }
+    @media (max-width: 900px) {
+      header, .intro, .products, .why-us, .testimonials, .contact, .footer {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 8px;
+        gap: 24px;
+      }
+      .intro-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+    @media (max-width: 700px) {
+      .banner-content h1 { font-size: 1.3em; }
+      .intro, .products, .why-us, .testimonials, .contact {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+      .products, .testimonials, .why-us-icons {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .intro-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">GenuineXplor</div>
+  <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav>
+    <div class="nav-links" id="navLinks">
+      <button class="nav-link-btn" data-link="index.html">Home</button>
+      <div class="dropdown" id="productDropdown">
+        <button class="dropbtn nav-link-btn" tabindex="0">Product</button>
+        <div class="dropdown-content">
+          <a href="backpacks.html">Backpacks</a>
+          <a href="belts.html">Belts</a>
+          <a href="knives.html">Knives</a>
+          <a href="tactical-products.html">Tactical Products</a>
+          <a href="accessories.html">Accessories</a>
+        </div>
+      </div>
+      <button class="nav-link-btn" data-link="about.html">About Us</button>
+      <div class="dropdown" id="servicesDropdown">
+        <button class="dropbtn nav-link-btn" tabindex="0">Services</button>
+        <div class="dropdown-content">
+          <a href="services.html#capabilities">Capabilities</a>
+          <a href="services.html#activities">Activities</a>
+          <a href="services.html#clients">Clients</a>
+        </div>
+      </div>
+      <button class="nav-link-btn" data-link="blog.html" style="margin-right:18px;">Blog</button>
+      <button class="nav-link-btn" data-link="contact.html">Contact</button>
+    </div>
+  </nav>
+</header>
+<section class="banner">
+  <div class="banner-slide active" style="background-image: url('banner1.jpg');"></div>
+  <div class="banner-slide" style="background-image: url('banner2.jpg');"></div>
+  <div class="banner-slide" style="background-image: url('banner3.jpg');"></div>
+  <div class="banner-content">
+    <h1></h1>
+    <p>Your Trusted OEM & ODM Partner for Outdoor Gear</p>
+    <button class="btn" onclick="location.href='contact.html'">Contact Us</button>
+  </div>
+  <div class="banner-controls">
+    <button id="prev">&#10094;</button>
+    <button id="next">&#10095;</button>
+  </div>
+  <div class="banner-dots">
+    <div class="banner-dot active"></div>
+    <div class="banner-dot"></div>
+    <div class="banner-dot"></div>
+  </div>
+</section>
+<section class="intro">
+  <div class="intro-row">
+    <span class="intro-title">We Build Reliable Outdoor Equipment for Global Brands</span>
+    <span class="intro-desc">From tactical tools to advanced outdoor gear, we deliver OEM & ODM solutions trusted by professionals worldwide.</span>
+  </div>
+</section>
+<section class="products">
+  <div class="product-box" style="background-image: url('product-backpack.jpg');" onclick="location.href='product.html#backpack'">
+    <h2>Backpacks</h2>
+  </div>
+  <div class="product-box" style="background-image: url('product-belts.jpg');" onclick="location.href='product.html#belts'">
+    <h2>Belts</h2>
+  </div>
+  <div class="product-box" style="background-image: url('product-knives.jpg');" onclick="location.href='product.html#knives'">
+    <h2>Knives</h2>
+  </div>
+  <div class="product-box" style="background-image: url('product-tactical.jpg');" onclick="location.href='product.html#tactical'">
+    <h2>Tactical Products</h2>
+  </div>
+</section>
+<section class="why-us">
+  <h2>Why Choose Us</h2>
+  <div class="why-us-icons">
+    <div class="why-us-icon">Gear Up with Confidence</div>
+    <div class="why-us-icon">Your Brand, Our Expertise</div>
+    <div class="why-us-icon">Tested Beyond the Showroom</div>
+    <div class="why-us-icon">Global Support, Local Flexibility</div>
+  </div>
+</section>
+<section class="testimonials">
+  <div class="testimonial-box" style="background-image: url('testimonial1.jpg');">
+    <div class="testimonial-text">"We've been working with this team for over three years. Their reliable production schedules and consistent quality have been key to our brand’s success." - Mark T., Outdoor Essentials Inc.</div>
+  </div>
+  <div class="testimonial-box" style="background-image: url('testimonial2.jpg');">
+    <div class="testimonial-text">"They offer flexible solutions and fast response times. Thanks to their OEM service, we successfully launched a new lightweight gear series." - Emma L., SummitGear Co.</div>
+  </div>
+  <div class="testimonial-box" style="background-image: url('testimonial3.jpg');">
+    <div class="testimonial-text">"The team understands what outdoor professionals need. Their products are durable, well-designed, and always meet our expectations." - David S., TrailMaster Gear</div>
+  </div>
+</section>
+<section class="contact">
+  <h2>Ready to build your next outdoor collection?</h2>
+  <button class="btn" onclick="location.href='contact.html'">Contact Us</button>
+</section>
+<footer class="footer">
+  <div style="flex: 1 1 200px;">
+    <h4>OEM & ODM</h4>
+    <ul>
+      <li><a href="services.html">OEM & ODM Services</a></li>
+      <li><a href="services.html#lowmoq">Low MOQ Solutions</a></li>
+      <li><a href="product.html#ready">Ready-to-Ship</a></li>
+      <li><a href="product.html#custom">Custom Outdoor Gear</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html#story">Our Story</a></li>
+      <li><a href="about.html#factory">Our Factory</a></li>
+      <li><a href="about.html#clients">Global Clients</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>Connect</h4>
+    <ul>
+      <li style="margin-bottom: 10px;">Phone: +86 123 456 7890</li>
+      <li style="margin-bottom: 10px;">Email: infoxxxx</li>
+      <li>
+        <a href="#"><img src="icon-ig.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-fb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-ytb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-linkedin.svg" width="20" height="20"></a>
+      </li>
+    </ul>
+  </div>
+</footer>
+<script>
+/* Banner 轮播 */
+const slides = document.querySelectorAll('.banner-slide');
+const dots = document.querySelectorAll('.banner-dot');
+let currentSlide = 0;
+let slideInterval = setInterval(nextSlide, 4000);
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+}
+
+document.getElementById('next').addEventListener('click', () => {
+  nextSlide();
+  resetInterval();
+});
+document.getElementById('prev').addEventListener('click', () => {
+  prevSlide();
+  resetInterval();
+});
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentSlide = index;
+    showSlide(currentSlide);
+    resetInterval();
+  });
+});
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 4000);
+}
+
+/* 移动端导航交互 */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+const productDropdown = document.getElementById('productDropdown');
+const servicesDropdown = document.getElementById('servicesDropdown');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  // 关闭所有下拉
+  productDropdown.classList.remove('open');
+  servicesDropdown.classList.remove('open');
+});
+
+// 统一主菜单 hover 效果
+function setupNavLinkHover() {
+  const navLinks = document.querySelectorAll('.nav-link-btn');
+  navLinks.forEach(btn => {
+    // 桌面端 hover
+    btn.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 700) btn.classList.add('active');
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.classList.remove('active');
+    });
+    // 点击跳转（非下拉按钮）
+    if (!btn.closest('.dropdown')) {
+      btn.addEventListener('click', () => {
+        if (window.innerWidth > 700) {
+          window.location.href = btn.getAttribute('data-link');
+        } else {
+          window.location.href = btn.getAttribute('data-link');
+          // 移动端收起菜单
+          document.getElementById('navLinks').classList.remove('open');
+          productDropdown.classList.remove('open');
+          servicesDropdown.classList.remove('open');
+        }
+      });
+    }
+  });
+}
+setupNavLinkHover();
+
+// 下拉菜单移动端点击展开/收起
+function setupDropdown(dropdown) {
+  const btn = dropdown.querySelector('.dropbtn');
+  btn.addEventListener('click', (e) => {
+    // 仅在移动端生效
+    if (window.innerWidth <= 700) {
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+      // 关闭另一个下拉
+      if (dropdown === productDropdown) servicesDropdown.classList.remove('open');
+      if (dropdown === servicesDropdown) productDropdown.classList.remove('open');
+    } else {
+      // 桌面端点击主按钮直接跳转
+      if (dropdown === productDropdown) window.location.href = 'product.html';
+      if (dropdown === servicesDropdown) window.location.href = 'services.html';
+    }
+  });
+  // 桌面端 hover 展开
+  dropdown.addEventListener('mouseenter', () => {
+    if (window.innerWidth > 700) {
+      dropdown.classList.add('open');
+      btn.classList.add('active');
+    }
+  });
+  dropdown.addEventListener('mouseleave', () => {
+    if (window.innerWidth > 700) {
+      dropdown.classList.remove('open');
+      btn.classList.remove('active');
+    }
+  });
+}
+setupDropdown(productDropdown);
+setupDropdown(servicesDropdown);
+
+/* 点击下拉项后自动收起导航（移动端） */
+document.querySelectorAll('.dropdown-content a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 700) {
+      navLinks.classList.remove('open');
+      productDropdown.classList.remove('open');
+      servicesDropdown.classList.remove('open');
+    }
+  });
+});
+/* 点击普通导航项后自动收起导航（移动端） */
+document.querySelectorAll('.nav-links > a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 700) {
+      navLinks.classList.remove('open');
+      productDropdown.classList.remove('open');
+      servicesDropdown.classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>

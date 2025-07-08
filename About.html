@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | GenuineXplor</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background: #f8fafc;
+  color: #222;
+  letter-spacing: 0.01em;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+  border-radius: 0 0 24px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo {
+  font-size: 2.1em;
+  font-weight: 800;
+  color: #FFD700;
+  letter-spacing: 0.05em;
+}
+nav a {
+  margin: 0 18px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.08em;
+  position: relative;
+  transition: color 0.2s;
+}
+nav a:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+  border-radius: 2px;
+}
+nav a:hover {
+  color: #7CFC00;
+}
+
+/* Hero */
+.about-hero {
+  height: 48vh;
+  min-height: 260px;
+  background: url('product-hero.jpg') center/cover no-repeat;
+  position: relative;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 8px 32px rgba(255,215,0,0.06);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.38);
+  border-radius: 0 0 32px 32px;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+.hero-content h1 {
+  font-size: 2.3em;
+  font-weight: 800;
+  margin: 0.5em 0 0.2em 0;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  line-height: 1.2;
+}
+.hero-content p {
+  font-size: 1.15em;
+  margin-bottom: 18px;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+/* Section Layout */
+.section-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto 48px auto;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+  padding: 0;
+  overflow: hidden;
+}
+.section-row.reverse {
+  flex-direction: row-reverse;
+}
+.section-img {
+  flex: 1 1 380px;
+  min-width: 320px;
+  background: #f4f4f4;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.section-img img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  object-fit: cover;
+  display: block;
+}
+.section-img.placeholder {
+  background: linear-gradient(135deg, #FFD70022 60%, #7CFC0022 100%);
+  color: #bbb;
+  font-size: 1.15em;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+.section-content {
+  flex: 2 1 400px;
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section-content h2 {
+  font-size: 1.6em;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 18px;
+  letter-spacing: 0.02em;
+}
+.section-content h3 {
+  font-size: 1.15em;
+  color: #FFD700;
+  margin: 24px 0 8px 0;
+  font-weight: 700;
+}
+.section-content p {
+  font-size: 1.08em;
+  margin-bottom: 1.1em;
+  color: #222;
+}
+.section-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0;
+}
+.section-content li {
+  margin-bottom: 14px;
+  padding-left: 22px;
+  position: relative;
+  font-size: 1.08em;
+}
+.section-content li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  background: #7CFC00;
+  border-radius: 50%;
+}
+
+/* Divider */
+.section-divider {
+  height: 2px;
+  width: 60px;
+  background: #FFD700;
+  margin: 24px 0 32px 0;
+  border-radius: 2px;
+}
+
+/* CTA */
+.cta {
+  background: #fff;
+  text-align: center;
+  padding: 64px 20px 72px 20px;
+  border-radius: 24px;
+  box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+  margin: 0 auto 32px auto;
+  max-width: 900px;
+}
+.cta h2 {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 18px;
+}
+.cta p {
+  margin-bottom: 20px;
+  color: #333;
+}
+.btn {
+  margin-top: 18px;
+  padding: 12px 38px;
+  background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+  border: none;
+  color: #222;
+  font-weight: bold;
+  font-size: 1.1em;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(255,215,0,0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+.btn:hover {
+  background: linear-gradient(90deg, #7CFC00 0%, #FFD700 100%);
+  color: #222;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Footer */
+.footer {
+  background: #fffbe6;
+  color: #333;
+  padding: 64px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  gap: 48px;
+  border-radius: 0;
+  box-shadow: 0 -2px 16px rgba(255,215,0,0.04);
+}
+.footer h4 {
+  margin-bottom: 15px;
+  color: #FFD700;
+  font-weight: 700;
+  font-size: 1.08em;
+}
+.footer a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer a:hover {
+  color: #7CFC00;
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+.footer li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1000px) {
+  .section-row, .section-row.reverse {
+    flex-direction: column;
+    gap: 0;
+    border-radius: 18px;
+  }
+  .section-img, .section-img.placeholder {
+    min-height: 180px;
+    height: 180px;
+    max-width: 100%;
+  }
+  .section-content {
+    padding: 32px 16px;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 8px;
+    gap: 24px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">GenuineXplor</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="product.html">Product</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="about-hero">
+  <div class="hero-content">
+    <h1>Your Brand. Their Adventure.<br>Our Responsibility.</h1>
+    <p>Empowering brands to build gear that endures — for every explorer, everywhere.</p>
+  </div>
+</section>
+
+<!-- Mission & Vision -->
+<div class="section-row">
+  <div class="section-img placeholder">
+    <!-- 预留图片位置，替换下方img的src即可 -->
+    <img src="about-mission.jpg" alt="Our Mission" style="display:block;">
+    <!-- <span>图片预留区<br>建议尺寸 600x400px</span> -->
+  </div>
+  <div class="section-content">
+    <h2>Built for those who explore.<br>Trusted by those who lead.</h2>
+    <div class="section-divider"></div>
+    <h3>Our Mission</h3>
+    <p>To help brands build outdoor gear that earns its place — on rugged trails, in harsh weather, when reliability matters most.</p>
+    <h3>Our Vision</h3>
+    <p>To be the partner behind the products explorers trust — where durability, design, and bold ideas meet the real world.</p>
+  </div>
+</div>
+
+<!-- Brand Spirit -->
+<div class="section-row reverse">
+  <div class="section-img placeholder">
+    <!-- 预留图片位置，替换下方img的src即可 -->
+    <img src="about-spirit.jpg" alt="Brand Spirit" style="display:block;">
+    <!-- <span>图片预留区<br>建议尺寸 600x400px</span> -->
+  </div>
+  <div class="section-content">
+    <h2>The G.E.N.U.I.N.E. Spirit Behind Every Product</h2>
+    <div class="section-divider"></div>
+    <p>At <strong>GenuineXplor</strong>, we believe tools are never just tools.<br>
+      They carry purpose. They carry trust. They carry the will to explore.</p>
+    <p>But behind every reliable tool, there’s something more:<br>
+      A team. A promise. A foundation you can build your brand on.</p>
+    <p>We are not just your supplier.<br>
+      We are your brand’s silent force — from bold ideas to products that endure.</p>
+    <p>Global names trust us for our mature supply chain and seamless execution.<br>
+      Ambitious brands grow with us — from first sketch to first market success.<br>
+      Because with <strong>GenuineXplor</strong>, it’s never just manufacturing — it’s partnership.</p>
+    <p>From outdoor knives to tactical gear, we design, prototype, and manufacture.<br>
+      Driven by one mission: empowering exploration — in the wild, in the market, and beyond.</p>
+    <p>After all, every great journey begins long before the first step.<br>
+      It begins with the tools.<br>
+      It begins with the team behind them.<br>
+      It begins with us.</p>
+  </div>
+</div>
+
+<!-- Capabilities -->
+<div class="section-row">
+  <div class="section-img placeholder">
+    <!-- 预留图片位置，替换下方img的src即可 -->
+    <img src="about-factory.jpg" alt="Our Factory" style="display:block;">
+    <!-- <span>图片预留区<br>建议尺寸 600x400px</span> -->
+  </div>
+  <div class="section-content">
+    <h2>Reliable outdoor solutions, proven in the field.</h2>
+    <div class="section-divider"></div>
+    <ul>
+      <li>Complete OEM & ODM Solutions for Outdoor Gear</li>
+      <li>In-house Design & Engineering — from concept to tested prototype</li>
+      <li>Proven Manufacturing Trusted by Global Brands</li>
+      <li>Field-Tested Products Ready for Demanding Environments</li>
+      <li>Flexible Support for Brands at Every Stage</li>
+      <li>Fast Prototyping and Reliable Worldwide Delivery</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta cta-full">
+  <h2>Ready to Collaborate?</h2>
+  <p>Let’s build something that lasts.</p>
+  <button class="btn" onclick="location.href='contact.html'">Contact Us</button>
+</section>
+<style>
+.cta.cta-full {
+  max-width: none;
+  width: 100vw;
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+}
+</style>
+
+<!-- Footer -->
+<footer class="footer">
+  <div style="flex: 1 1 200px;">
+    <h4>OEM & ODM</h4>
+    <ul>
+      <li><a href="services.html">OEM & ODM Services</a></li>
+      <li><a href="services.html#lowmoq">Low MOQ Solutions</a></li>
+      <li><a href="product.html#ready">Ready-to-Ship</a></li>
+      <li><a href="product.html#custom">Custom Outdoor Gear</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html#story">Our Story</a></li>
+      <li><a href="about.html#factory">Our Factory</a></li>
+      <li><a href="about.html#clients">Global Clients</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>Connect</h4>
+    <ul>
+      <li style="margin-bottom: 10px;">Phone: +86 123 456 7890</li>
+      <li style="margin-bottom: 10px;">Email: infoxxxx</li>
+      <li>
+        <a href="#"><img src="icon-ig.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-fb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-ytb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-linkedin.svg" width="20" height="20"></a>
+      </li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

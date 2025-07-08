@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #333;
+}
+
+header {
+    background: #222;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffcc00;
+}
+
+.hero {
+    background: #444;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.categories {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.category-item {
+    width: 150px;
+    background: #f4f4f4;
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.hover-zoom {
+    width: 100%;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.about {
+    padding: 40px 20px;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.about-content img {
+    width: 300px;
+    height: auto;
+}
+
+.about-text {
+    max-width: 400px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #222;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    background: #555;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.product-preview {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product-item {
+    width: 150px;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+    nav a {
+        margin-left: 10px;
+        font-size: 0.9em;
+    }
+    .hero h1 {
+        font-size: 1.5em;
+    }
+    .about-content {
+        flex-direction: column;
+    }
+}

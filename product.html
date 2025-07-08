@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Products - Outdoor OEM</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      background: #f8fafc;
+      color: #222;
+      letter-spacing: 0.01em;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+      border-radius: 0 0 24px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 2.1em;
+      font-weight: 800;
+      color: #FFD700;
+      letter-spacing: 0.05em;
+    }
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.08em;
+      position: relative;
+      transition: color 0.2s;
+    }
+    nav a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+      border-radius: 2px;
+    }
+    nav a:hover {
+      color: #7CFC00;
+    }
+    .hero {
+      height: 48vh;
+      min-height: 220px;
+      background: url('product-hero.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 8px 32px rgba(255,215,0,0.06);
+      margin-bottom: 32px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.38);
+      border-radius: 0 0 32px 32px;
+    }
+    .hero > div {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .hero h1 {
+      font-size: 2.2em;
+      font-weight: 800;
+      margin: 0.5em 0 0.2em 0;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.15em;
+      margin-bottom: 18px;
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .product-grid {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 36px 20px 36px 20px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      margin: 0 auto 32px auto;
+      max-width: 1200px;
+    }
+    .product-card {
+      flex: 1 1 220px;
+      min-width: 220px;
+      max-width: 320px;
+      min-height: 240px;
+      background-size: cover;
+      background-position: center;
+      padding: 24px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+      border: none;
+      overflow: hidden;
+    }
+    .product-card h2 {
+      position: relative;
+      z-index: 2;
+      padding: 10px 22px;
+      font-size: 1.2em;
+      background: rgba(255,255,255,0.18);
+      border-radius: 8px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 10px;
+      color: #FFD700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .product-card:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 8px 32px rgba(255,215,0,0.10);
+    }
+    .footer {
+      background: #fffbe6;
+      color: #333;
+      padding: 64px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100vw;
+      max-width: none;
+      margin: 0;
+      gap: 48px;
+      border-radius: 0;
+      box-shadow: 0 -2px 16px rgba(255,215,0,0.04);
+    }
+    .footer h4 {
+      margin-bottom: 15px;
+      color: #FFD700;
+      font-weight: 700;
+      font-size: 1.08em;
+    }
+    .footer a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer a:hover {
+      color: #7CFC00;
+    }
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer li {
+      margin-bottom: 10px;
+    }
+    @media (max-width: 900px) {
+      header, .hero, .product-grid, .footer {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 8px;
+        gap: 24px;
+      }
+    }
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 1.3em; }
+      .hero, .product-grid, .footer {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+      .product-grid {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">GenuineXplor</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="product.html">Product</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Explore Our Outdoor Product Range</h1>
+    <p>Gear Up for Every Adventure</p>
+  </div>
+</section>
+
+<section class="product-grid">
+  <div class="product-card" style="background-image: url('product-backpack.jpg');" onclick="location.href='product.html#backpack'">
+    <h2>Backpacks</h2>
+  </div>
+  <div class="product-card" style="background-image: url('product-belts.jpg');" onclick="location.href='product.html#belts'">
+    <h2>Belts</h2>
+  </div>
+  <div class="product-card" style="background-image: url('product-knives.jpg');" onclick="location.href='product.html#knives'">
+    <h2>Knives</h2>
+  </div>
+  <div class="product-card" style="background-image: url('product-tactical.jpg');" onclick="location.href='product.html#tactical'">
+    <h2>Tactical Products</h2>
+  </div>
+  <div class="product-card" style="background-image: url('product-accessories.jpg');" onclick="location.href='product.html#accessories'">
+    <h2>Accessories</h2>
+  </div>
+</section>
+
+<footer class="footer">
+  <div style="flex: 1 1 200px;">
+    <h4>OEM & ODM</h4>
+    <ul>
+      <li><a href="services.html">OEM & ODM Services</a></li>
+      <li><a href="services.html#lowmoq">Low MOQ Solutions</a></li>
+      <li><a href="product.html#ready">Ready-to-Ship</a></li>
+      <li><a href="product.html#custom">Custom Outdoor Gear</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html#story">Our Story</a></li>
+      <li><a href="about.html#factory">Our Factory</a></li>
+      <li><a href="about.html#clients">Global Clients</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>Connect</h4>
+    <ul>
+      <li style="margin-bottom: 10px;">Phone: +86 123 456 7890</li>
+      <li style="margin-bottom: 10px;">Email: infoxxxx</li>
+      <li>
+        <a href="#"><img src="icon-ig.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-fb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-ytb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-linkedin.svg" width="20" height="20"></a>
+      </li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

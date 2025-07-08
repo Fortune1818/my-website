@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outdoor Gear OEM/ODM - Blog Detail</title>
+  <style>
+    body { background: #f8fafc; color: #222; font-family: 'Segoe UI', 'Arial', sans-serif; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 60px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.06);
+      border-radius: 0 0 24px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-size: 2.1em;
+      font-weight: 800;
+      color: #FFD700;
+      letter-spacing: 0.05em;
+    }
+    nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links > a,
+    .nav-link-btn {
+      color: #333 !important;
+      font-weight: 600;
+      font-size: 1.08em;
+      margin: 0 18px;
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+    }
+    .nav-links > a:hover,
+    .nav-link-btn:hover,
+    .nav-link-btn.active {
+      color: #7CFC00 !important;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropbtn {
+      background: none;
+      border: none;
+      font: inherit;
+      color: #333;
+      font-weight: 600;
+      font-size: 1.08em;
+      margin: 0 18px;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .dropbtn:hover,
+    .dropdown.open .dropbtn {
+      color: #7CFC00;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 120%;
+      min-width: 160px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(255,215,0,0.08);
+      border-radius: 10px;
+      z-index: 100;
+      flex-direction: column;
+      padding: 8px 0;
+      animation: fadeIn 0.2s;
+    }
+    .dropdown.open .dropdown-content {
+      display: flex;
+    }
+    .dropdown-content a {
+      color: #333;
+      padding: 10px 24px;
+      text-decoration: none;
+      display: block;
+      font-size: 1em;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 6px;
+    }
+    .dropdown-content a:hover {
+      background: linear-gradient(90deg, #FFD700 0%, #7CFC00 100%);
+      color: #fff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 16px;
+      z-index: 101;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: #FFD700;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    @media (max-width: 700px) {
+      .nav-toggle {
+        display: flex;
+      }
+      nav {
+        width: 100%;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 4px 24px rgba(255,215,0,0.10);
+        border-radius: 0 0 18px 18px;
+        padding: 18px 0 12px 0;
+        display: none;
+        z-index: 100;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-links > a,
+      .dropbtn,
+      .nav-link-btn {
+        margin: 12px 24px;
+        font-size: 1.1em;
+        color: #333 !important;
+      }
+      .dropdown-content {
+        position: static;
+        min-width: 0;
+        box-shadow: none;
+        border-radius: 0;
+        background: none;
+        padding: 0;
+        animation: none;
+      }
+      .dropdown-content a {
+        padding: 10px 36px;
+        background: none;
+        color: #333;
+        border-radius: 0;
+      }
+      .dropdown.open .dropdown-content {
+        display: flex;
+      }
+    }
+    /* 页脚样式从index.html复制 */
+    .footer {
+      background: #fffbe6;
+      color: #333;
+      padding: 64px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100vw;
+      max-width: none;
+      margin: 0;
+      gap: 48px;
+      border-radius: 0;
+      box-shadow: 0 -2px 16px rgba(255,215,0,0.04);
+    }
+    .footer h4 {
+      margin-bottom: 15px;
+      color: #FFD700;
+      font-weight: 700;
+      font-size: 1.08em;
+    }
+    .footer a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer a:hover {
+      color: #7CFC00;
+    }
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer li {
+      margin-bottom: 10px;
+    }
+    @media (max-width: 900px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 8px;
+        gap: 24px;
+      }
+    }
+    .blog-detail-container {
+      max-width: 900px;
+      margin: 48px auto 32px auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(255,215,0,0.04);
+      padding: 40px 24px 32px 24px;
+    }
+    .blog-title {
+      font-size: 2em;
+      font-weight: 800;
+      color: #FFD700;
+      margin-bottom: 18px;
+      letter-spacing: 0.02em;
+    }
+    .blog-meta {
+      color: #888;
+      font-size: 0.98em;
+      margin-bottom: 24px;
+    }
+    .blog-content {
+      font-size: 1.18em;
+      line-height: 1.7;
+      color: #222;
+    }
+    .blog-back {
+      display: inline-block;
+      margin-top: 32px;
+      color: #7CFC00;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.05em;
+      transition: color 0.2s;
+    }
+    .blog-back:hover {
+      color: #FFD700;
+      text-decoration: underline;
+    }
+    @media (max-width: 700px) {
+      .blog-detail-container { padding: 18px 4px 18px 4px; }
+      .blog-title { font-size: 1.3em; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">GenuineXplor</div>
+  <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav>
+    <div class="nav-links" id="navLinks">
+      <button class="nav-link-btn" data-link="index.html">Home</button>
+      <div class="dropdown" id="productDropdown">
+        <button class="dropbtn nav-link-btn" tabindex="0">Product</button>
+        <div class="dropdown-content">
+          <a href="backpacks.html">Backpacks</a>
+          <a href="belts.html">Belts</a>
+          <a href="knives.html">Knives</a>
+          <a href="tactical-products.html">Tactical Products</a>
+          <a href="accessories.html">Accessories</a>
+        </div>
+      </div>
+      <button class="nav-link-btn" data-link="about.html">About Us</button>
+      <div class="dropdown" id="servicesDropdown">
+        <button class="dropbtn nav-link-btn" tabindex="0">Services</button>
+        <div class="dropdown-content">
+          <a href="services.html#capabilities">Capabilities</a>
+          <a href="services.html#activities">Activities</a>
+          <a href="services.html#clients">Clients</a>
+        </div>
+      </div>
+      <button class="nav-link-btn" data-link="blog.html" style="margin-right:18px;">Blog</button>
+      <button class="nav-link-btn" data-link="contact.html">Contact</button>
+    </div>
+  </nav>
+</header>
+<div class="blog-detail-container">
+  <div class="blog-title">How to Choose the Right Outdoor Backpack for Your Adventure</div>
+  <div class="blog-meta">Posted on 2024-06-01 &nbsp;|&nbsp; By GenuineXplor Team</div>
+  <div class="blog-content">
+    <p>
+      Choosing the right backpack is crucial for any outdoor adventure. Whether you’re planning a weekend hike or a week-long expedition, the right gear can make all the difference.
+    </p>
+    <h3>1. Consider Your Activity</h3>
+    <p>
+      Backpacks come in various shapes and sizes. For day hikes, a lightweight pack with a capacity of 20-30L is usually sufficient. For multi-day trips, consider packs with 40L or more, offering extra space for sleeping bags, tents, and food.
+    </p>
+    <h3>2. Fit and Comfort</h3>
+    <p>
+      Look for adjustable shoulder straps, padded hip belts, and ventilated back panels. A well-fitted backpack distributes weight evenly and reduces fatigue.
+    </p>
+    <h3>3. Material and Durability</h3>
+    <p>
+      Outdoor environments can be tough on gear. Choose backpacks made from ripstop nylon or polyester with reinforced stitching and water-resistant coatings.
+    </p>
+    <h3>4. Features</h3>
+    <p>
+      Useful features include hydration bladder sleeves, multiple compartments, external gear loops, and rain covers. Select features based on your specific needs.
+    </p>
+    <p>
+      <strong>Conclusion:</strong> The right backpack enhances your outdoor experience. Explore our <a href="product.html#backpack">Backpacks</a> collection for reliable options trusted by professionals worldwide.
+    </p>
+  </div>
+  <a class="blog-back" href="blog.html">&larr; Back to Blog List</a>
+</div>
+<footer class="footer">
+  <div style="flex: 1 1 200px;">
+    <h4>OEM & ODM</h4>
+    <ul>
+      <li><a href="services.html">OEM & ODM Services</a></li>
+      <li><a href="services.html#lowmoq">Low MOQ Solutions</a></li>
+      <li><a href="product.html#ready">Ready-to-Ship</a></li>
+      <li><a href="product.html#custom">Custom Outdoor Gear</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>About</h4>
+    <ul>
+      <li><a href="about.html#story">Our Story</a></li>
+      <li><a href="about.html#factory">Our Factory</a></li>
+      <li><a href="about.html#clients">Global Clients</a></li>
+    </ul>
+  </div>
+  <div style="flex: 1 1 200px;">
+    <h4>Connect</h4>
+    <ul>
+      <li style="margin-bottom: 10px;">Phone: +86 123 456 7890</li>
+      <li style="margin-bottom: 10px;">Email: infoxxxx</li>
+      <li>
+        <a href="#"><img src="icon-ig.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-fb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-ytb.svg" width="20" height="20" style="margin-right:10px;"></a>
+        <a href="#"><img src="icon-linkedin.svg" width="20" height="20"></a>
+      </li>
+    </ul>
+  </div>
+</footer>
+<script>
+  // 完整导航交互，与index.html一致
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  const productDropdown = document.getElementById('productDropdown');
+  const servicesDropdown = document.getElementById('servicesDropdown');
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    productDropdown.classList.remove('open');
+    servicesDropdown.classList.remove('open');
+  });
+
+  function setupNavLinkHover() {
+    const navLinksBtns = document.querySelectorAll('.nav-link-btn');
+    navLinksBtns.forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 700) btn.classList.add('active');
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.classList.remove('active');
+      });
+      if (!btn.closest('.dropdown')) {
+        btn.addEventListener('click', () => {
+          if (window.innerWidth > 700) {
+            window.location.href = btn.getAttribute('data-link');
+          } else {
+            window.location.href = btn.getAttribute('data-link');
+            document.getElementById('navLinks').classList.remove('open');
+            productDropdown.classList.remove('open');
+            servicesDropdown.classList.remove('open');
+          }
+        });
+      }
+    });
+  }
+  setupNavLinkHover();
+
+  function setupDropdown(dropdown) {
+    const btn = dropdown.querySelector('.dropbtn');
+    btn.addEventListener('click', (e) => {
+      if (window.innerWidth <= 700) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+        if (dropdown === productDropdown) servicesDropdown.classList.remove('open');
+        if (dropdown === servicesDropdown) productDropdown.classList.remove('open');
+      } else {
+        if (dropdown === productDropdown) window.location.href = 'product.html';
+        if (dropdown === servicesDropdown) window.location.href = 'services.html';
+      }
+    });
+    dropdown.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 700) {
+        dropdown.classList.add('open');
+        btn.classList.add('active');
+      }
+    });
+    dropdown.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 700) {
+        dropdown.classList.remove('open');
+        btn.classList.remove('active');
+      }
+    });
+  }
+  setupDropdown(productDropdown);
+  setupDropdown(servicesDropdown);
+
+  document.querySelectorAll('.dropdown-content a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 700) {
+        navLinks.classList.remove('open');
+        productDropdown.classList.remove('open');
+        servicesDropdown.classList.remove('open');
+      }
+    });
+  });
+  document.querySelectorAll('.nav-links > a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 700) {
+        navLinks.classList.remove('open');
+        productDropdown.classList.remove('open');
+        servicesDropdown.classList.remove('open');
+      }
+    });
+  });
+</script>
+</body>
+</html>
